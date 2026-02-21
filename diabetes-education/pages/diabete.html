@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>ماهو السكري</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="title">ماهو السكري</div>
+      <a href="../index.html" class="btn">رجوع</a>
+    </header>
+
+    <!-- تعريف السكري -->
+    <section class="card">
+      <p>
+        السكري هو مرض مزمن وين السكر يبقى عالي في الدم على خاطر الجسم ما يقدرش يستعمل الأنسولين. 
+        الأنسولين يخدم كيما المفتاح لي يحل الكبدة ويخزن فيها السكر الزايد فالدم، وإذا ما يخدمش مليح السكر يبقى طالع.
+        <button class="sound-btn" onclick="playAudio('definitionAudio')">🔊</button>
+        <audio id="definitionAudio" src="../assets/audio/definition.mp3"></audio>
+      </p>
+    </section>
+
+    <!-- شبكة البطاقات -->
+    <section class="grid">
+      <div class="card" id="typesBtn">
+        🔍 أنواع السكري
+        <button class="sound-btn" onclick="playAudio('typesAudio')">🔊</button>
+        <audio id="typesAudio" src="../assets/audio/types.mp3"></audio>
+      </div>
+
+      <div class="card" id="symptomsBtn">
+        ⚠️ الأعراض
+        <button class="sound-btn" onclick="playAudio('symptomsAudio')">🔊</button>
+        <audio id="symptomsAudio" src="../assets/audio/symptoms.mp3"></audio>
+      </div>
+
+      <div class="card" id="complicationsBtn">
+        🚨 المضاعفات
+        <button class="sound-btn" onclick="playAudio('complicationsAudio')">🔊</button>
+        <audio id="complicationsAudio" src="../assets/audio/complications.mp3"></audio>
+      </div>
+
+      <div class="card" id="preventionBtn">
+        🛡️ الوقاية
+        <button class="sound-btn" onclick="playAudio('preventionAudio')">🔊</button>
+        <audio id="preventionAudio" src="../assets/audio/prevention.mp3"></audio>
+      </div>
+    </section>
+
+    <!-- قسم المعلومات -->
+    <section class="card" id="infoPanel">
+      <h3>المعلومات</h3>
+      <div id="infoContent">
+        <p>اضغط على بطاقة باش تشوف التفاصيل هنا.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- سكريبت تشغيل الصوت وتغيير المحتوى -->
+  <script>
+    function playAudio(id) {
+      const audio = document.getElementById(id);
+      audio.play();
+    }
+
+    // محتوى البطاقات
+    const typesContent = `
+      <ul>
+        <li>النوع الأول: يبان بكري، الجسم ما يفرزش أنسولين، لازم حقن أنسولين طول الحياة.</li>
+        <li>النوع الثاني: يجي غالباً مع الكبر وزيادة الوزن، الجسم يفرز أنسولين بصح ما يخدمش مليح.</li>
+        <li>سكري الحمل: يبان عند بعض النساء في الحمل ويختفي بعد الولادة، بصح لازم متابعة باش ما يتأثرش الجنين.</li>
+      </ul>
+      <button class="sound-btn" onclick="playAudio('typesDetailAudio')">🔊</button>
+      <audio id="typesDetailAudio" src="../assets/audio/types-detail.mp3"></audio>
+    `;
+
+    const symptomsContent = `
+      <ul>
+        <li>العطش بزاف.</li>
+        <li>التبول بزاف.</li>
+        <li>نقصان الوزن بلا سبب.</li>
+        <li>تعب وإرهاق.</li>
+        <li>تشوش في النظر.</li>
+        <li>جروح ما تبرىش بسهولة.</li>
+      </ul>
+      <button class="sound-btn" onclick="playAudio('symptomsDetailAudio')">🔊</button>
+      <audio id="symptomsDetailAudio" src="../assets/audio/symptoms-detail.mp3"></audio>
+    `;
+
+    const complicationsContent = `
+      <ul>
+        <li>مشاكل في العينين (حتى فقدان البصر).</li>
+        <li>مشاكل في الكلاوي.</li>
+        <li>مشاكل في القلب والشرايين.</li>
+        <li>مشاكل في الأعصاب والقدمين (قدم السكري).</li>
+      </ul>
+      <button class="sound-btn" onclick="playAudio('complicationsDetailAudio')">🔊</button>
+      <audio id="complicationsDetailAudio" src="../assets/audio/complications-detail.mp3"></audio>
+    `;
+
+    const preventionContent = `
+      <ul>
+        <li>نقصان الوزن إذا كان زائد.</li>
+        <li>ممارسة الرياضة بانتظام.</li>
+        <li>أكل صحي ومتوازن (نقص السكر والدهون).</li>
+        <li>مراقبة السكر في الدم بانتظام.</li>
+        <li>متابعة الطبيب بانتظام.</li>
+      </ul>
+      <button class="sound-btn" onclick="playAudio('preventionDetailAudio')">🔊</button>
+      <audio id="preventionDetailAudio" src="../assets/audio/prevention-detail.mp3"></audio>
+    `;
+
+    // تغيير المحتوى عند الضغط
+    document.getElementById("typesBtn").addEventListener("click", () => {
+      document.getElementById("infoContent").innerHTML = typesContent;
+    });
+
+    document.getElementById("symptomsBtn").addEventListener("click", () => {
+      document.getElementById("infoContent").innerHTML = symptomsContent;
+    });
+
+    document.getElementById("complicationsBtn").addEventListener("click", () => {
+      document.getElementById("infoContent").innerHTML = complicationsContent;
+    });
+
+    document.getElementById("preventionBtn").addEventListener("click", () => {
+      document.getElementById("infoContent").innerHTML = preventionContent;
+    });
+  </script>
+
+<section class="card">
+  <h3>مخطط أنواع السكري</h3>
+  <div class="tree">
+    <ul>
+      <li>
+        <span>السكري</span>
+        <ul>
+          <li>
+            <span>النوع الأول</span>
+            <ul>
+              <li><span>يبان بكري (في الطفولة والشباب)</span></li>
+              <li><span>الجسم ما يفرزش أنسولين</span></li>
+              <li><span>لازم حقن أنسولين طول الحياة</span></li>
+            </ul>
+          </li>
+          <li>
+            <span>النوع الثاني</span>
+            <ul>
+              <li><span>يجي غالباً مع الكبر وزيادة الوزن</span></li>
+              <li><span>الجسم يفرز أنسولين بصح ما يخدمش مليح</span></li>
+              <li><span>يتعالج بالحمية، الرياضة، والأدوية</span></li>
+            </ul>
+          </li>
+          <li>
+            <span>سكري الحمل</span>
+            <ul>
+              <li><span>يبان عند بعض النساء أثناء الحمل</span></li>
+              <li><span>يختفي غالباً بعد الولادة</span></li>
+              <li><span>لازم متابعة باش ما يتأثرش الجنين</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+</body>
+</html>

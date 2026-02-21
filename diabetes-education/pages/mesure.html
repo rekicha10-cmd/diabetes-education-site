@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>قياس السكري اليومي</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="title">قياس السكري اليومي</div>
+      <a href="../index.html" class="btn">رجوع</a>
+    </header>
+
+    <!-- جدول القياسات -->
+    <section class="card">
+      <h3>سجل القياسات</h3>
+      <table class="measure-table">
+        <thead>
+          <tr>
+            <th>التاريخ</th>
+            <th>القياس (mg/dl)</th>
+            <th>ملاحظات(مثال صائم,بعد الاكل بساعتين,قبل الاكل)</th>
+          </tr>
+        </thead>
+        <tbody id="measureBody">
+          <!-- القياسات تظهر هنا -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- نموذج إضافة قياس جديد -->
+    <section class="card">
+      <h3>إضافة قياس جديد</h3>
+      <form id="measureForm">
+        <label>التاريخ:</label>
+        <input type="date" id="dateInput" required><br><br>
+
+        <label>القياس:</label>
+        <input type="number" id="valueInput" required><br><br>
+
+        <label>ملاحظات:</label>
+        <input type="text" id="noteInput"><br><br>
+
+        <button type="submit" class="btn">إضافة</button>
+        <button type="button" id="clearBtn" class="btn danger">مسح السجل</button>
+        <button type="button" id="exportExcel" class="btn">تحميل Excel</button>
+        <button type="button" id="exportPDF" class="btn">تحميل PDF</button>
+      </form>
+    </section>
+  </div>
+
+  <!-- سكريبت لإضافة القياسات مع التخزين والتصدير -->
+  <script>
+    const form = document.getElementById("measureForm");
+    const tableBody = document.getElementById("measureBody");
+    const clearBtn = document.getElementById("clearBtn");
+    const exportExcelBtn = document.getElementById("exportExcel");
+    const exportPDFBtn = document.getElementById("exportPDF");
+
+    // تحميل البيانات المحفوظة عند فتح الصفحة
+    window.onload = function() {
+      const savedData = JSON.parse(localStorage.getItem("measures")) || [];
+      savedData.forEach(measure => {
+        addRow(measure.date, measure.value, measure.note);
+      });
+    };
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const date = document.getElementById("dateInput").value;
+      const value = document.getElementById("valueInput").value;
+      const note = document.getElementById("noteInput").value;
+
+      // إضافة السطر للجدول
+      addRow(date, value, note);
+
+      // حفظ البيانات في Local Storage
+      const savedData = JSON.parse(localStorage.getItem("measures")) || [];
+      savedData.push({ date, value, note });
+      localStorage.setItem("measures", JSON.stringify(savedData));
+
+      form.reset();
+    });
+
+    // دالة لإضافة سطر جديد للجدول
+    function addRow(date, value, note) {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${date}</td>
+        <td>${value}</td>
+        <td>${note}</td>
+      `;
+      tableBody.appendChild(row);
+    }
+
+    // زر لمسح السجل بالكامل
+    clearBtn.addEventListener("click", function() {
+      localStorage.removeItem("measures");
+      tableBody.innerHTML = "";
+    });
+
+    // تحميل كملف Excel
+    exportExcelBtn.addEventListener("click", function() {
+      let csv = "التاريخ,القياس (mg/dl),ملاحظات\n";
+      const rows = tableBody.querySelectorAll("tr");
+      rows.forEach(row => {
+        const cols = row.querySelectorAll("td");
+        csv += `${cols[0].innerText},${cols[1].innerText},${cols[2].innerText}\n`;
+      });
+
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "سجل_القياسات.csv";
+      link.click();
+    });
+
+    // تحميل كملف PDF
+    exportPDFBtn.addEventListener("click", function() {
+      const printWindow = window.open('', '', 'height=600,width=800');
+      printWindow.document.write('<html><head><title>سجل القياسات</title></head><body>');
+      printWindow.document.write('<h3>سجل القياسات</h3>');
+      printWindow.document.write(document.querySelector(".measure-table").outerHTML);
+      printWindow.document.write('</body></html>');
+      printWindow.document.close();
+      printWindow.print();
+    });
+  </script>
+</body>
+</html>

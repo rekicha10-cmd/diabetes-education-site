@@ -1,0 +1,4 @@
+<!-- assets/img/lightbulb.svg -->
+<svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#22d3ee">
+  <path d="M9 21h6v-1H9v1zm3-19C7.58 2 4 5.58 4 10c0 2.38 1.19 4.49 3 5.74V18c0 .55.45 1 1 1h8c.55 0 1-.45 1-1v-2.26c1.81-1.25 3-3.36 3-5.74 0-4.42-3.58-8-8-8z"/>
+</svg>

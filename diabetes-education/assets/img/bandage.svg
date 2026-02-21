@@ -1,0 +1,4 @@
+<!-- assets/img/bandage.svg -->
+<svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#f59e0b">
+  <path d="M4.22 10.22l6-6a3 3 0 014.24 0l5.32 5.32a3 3 0 010 4.24l-6 6a3 3 0 01-4.24 0L4.22 14.46a3 3 0 010-4.24zM9 9h2v2H9V9zm4 0h2v2h-2V9z"/>
+</svg>

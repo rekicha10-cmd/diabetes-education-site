@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تذكيرات</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="title">تذكيرات</div>
+      <a href="../index.html" class="btn">رجوع</a>
+    </header>
+
+    <section class="card">
+      <form id="reminderForm">
+        <input type="text" name="title" placeholder="عنوان التذكير">
+        <input type="datetime-local" name="datetime">
+        <button type="submit" class="btn accent">أضف التذكير</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h3>قائمة التذكيرات</h3>
+      <ul id="remindersList"></ul>
+    </section>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.8/dist/umd/supabase.min.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/rappels.js"></script>
+</body>
+</html>

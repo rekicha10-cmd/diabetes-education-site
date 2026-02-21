@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>قدم السكري</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="title">قدم السكري</div>
+      <a href="../index.html" class="btn">رجوع</a>
+    </header>
+
+    <!-- تعريف قدم السكري -->
+    <section class="card">
+      <p>
+        قدم السكري هي مضاعفة خطيرة وين الجروح الصغيرة تولي كبيرة وما تبرىش بسهولة بسبب ارتفاع السكر في الدم.
+        <button class="sound-btn" onclick="playAudio('definitionAudio')">🔊</button>
+        <audio id="definitionAudio" src="../assets/audio/pied-definition.mp3"></audio>
+      </p>
+    </section>
+
+    <!-- شبكة البطاقات -->
+    <section class="grid">
+      <div class="card" id="causesBtn">
+        🔍 الأسباب
+        <button class="sound-btn" onclick="playAudio('causesAudio')">🔊</button>
+        <audio id="causesAudio" src="../assets/audio/pied-causes.mp3"></audio>
+      </div>
+
+      <div class="card" id="symptomsBtn">
+        ⚠️ الأعراض
+        <button class="sound-btn" onclick="playAudio('symptomsAudio')">🔊</button>
+        <audio id="symptomsAudio" src="../assets/audio/pied-symptoms.mp3"></audio>
+      </div>
+
+      <div class="card" id="preventionBtn">
+        🛡️ الوقاية
+        <button class="sound-btn" onclick="playAudio('preventionAudio')">🔊</button>
+        <audio id="preventionAudio" src="../assets/audio/pied-prevention.mp3"></audio>
+      </div>
+    </section>
+
+    <!-- قسم المعلومات -->
+    <section class="card" id="infoPanel">
+      <h3>المعلومات</h3>
+      <div id="infoContent">
+        <p>اضغط على بطاقة باش تشوف التفاصيل هنا.</p>
+      </div>
+    </section>
+
+    <!-- قسم الفيديو -->
+    <section class="card">
+      <h3>فيديو توضيحي</h3>
+      <video width="100%" controls>
+        <source src="../assets/video/pied.mp4" type="video/mp4">
+        متصفحك لا يدعم تشغيل الفيديو.
+      </video>
+    </section>
+  </div>
+
+  <!-- سكريبت تشغيل الصوت وتغيير المحتوى -->
+  <script>
+    function playAudio(id) {
+      const audio = document.getElementById(id);
+      audio.play();
+    }
+
+    // محتوى البطاقات
+    const causesContent = `
+      <ul>
+        <li>ضعف الدورة الدموية في الرجلين.</li>
+        <li>نقص الإحساس في الرجلين (ما تحسش بالجروح الصغيرة).</li>
+        <li>الجروح الصغيرة اللي ما تتعالجش مليح وتولي كبيرة.</li>
+        <li>ارتفاع السكر في الدم اللي يخلي الجروح ما تبرىش.</li>
+      </ul>
+      <button class="sound-btn" onclick="playAudio('causesDetailAudio')">🔊</button>
+      <audio id="causesDetailAudio" src="../assets/audio/pied-causes-detail.mp3"></audio>
+    `;
+
+    const symptomsContent = `
+      <p>
+        الأعراض: جروح ما تبرىش، انتفاخ، احمرار، أو حتى تقرحات في الرجل.
+        <button class="sound-btn" onclick="playAudio('symptomsDetailAudio')">🔊</button>
+        <audio id="symptomsDetailAudio" src="../assets/audio/pied-symptoms-detail.mp3"></audio>
+      </p>
+    `;
+
+    const preventionContent = `
+      <p>
+        الوقاية: لازم تغسل رجليك كل يوم، تفحصهم مليح، تلبس صباط مريح، وما تمشيش حافي.
+        <button class="sound-btn" onclick="playAudio('preventionDetailAudio')">🔊</button>
+        <audio id="preventionDetailAudio" src="../assets/audio/pied-prevention-detail.mp3"></audio>
+      </p>
+    `;
+
+    // تغيير المحتوى عند الضغط
+    document.getElementById("causesBtn").addEventListener("click", () => {
+      document.getElementById("infoContent").innerHTML = causesContent;
+    });
+
+    document.getElementById("symptomsBtn").addEventListener("click", () => {
+      document.getElementById("infoContent").innerHTML = symptomsContent;
+    });
+
+    document.getElementById("preventionBtn").addEventListener("click", () => {
+      document.getElementById("infoContent").innerHTML = preventionContent;
+    });
+  </script>
+</body>
+</html>

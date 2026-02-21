@@ -1,0 +1,280 @@
+
+
+/* إعدادات عامة */
+:root {
+  --bg: #0f172a;
+  --card: #111827;
+  --primary: #22d3ee;
+  --accent: #f59e0b;
+  --green: #10b981;
+  --red: #ef4444;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0b1224 0%, #0f172a 100%);
+  color: var(--text);              /* النصوص بيضاء */
+  font-family: "Tajawal", "Segoe UI", sans-serif;
+  direction: rtl;
+}
+
+/* الحاوية الرئيسية */
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* رأس الصفحة */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text);              /* العنوان أبيض */
+}
+
+/* أزرار */
+.btn {
+  background: var(--card);
+  color: var(--text);              /* نص أبيض */
+  border: 1px solid #1f2937;
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+/* شبكة البطاقات */
+.grid, .grid-plaies {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 720px) {
+  .grid, .grid-plaies {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* البطاقة */
+.card {
+  background: var(--card);
+  border: 1px solid #1f2937;
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  transition: transform .2s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card h3, .card h2 {
+  color: var(--text);              /* العناوين بيضاء */
+}
+
+.card p {
+  color: var(--text);              /* النصوص بيضاء */
+  font-size: 14px;
+}
+
+/* الصوتيات جنب النص */
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.row p {
+  flex: 1;
+  margin-right: 15px;
+  background: #1f2937;             /* خلفية رمادي غامق */
+  padding: 10px;
+  border-radius: 8px;
+  color: var(--text);              /* نص أبيض */
+}
+
+.row audio {
+  flex-shrink: 0;
+  filter: none;                    /* الأيقونات تبقى طبيعية */
+}
+
+.sound-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  float: left;        /* يظهر في الزاوية */
+  color: var(--text); /* أبيض */
+}
+
+.sound-btn:hover {
+  opacity: 0.7;
+}
+
+.tree ul {
+  padding-top: 20px;
+  position: relative;
+  display: flex; /* يخلي الفروع أفقية */
+  justify-content: center;
+}
+
+.tree li {
+  list-style-type: none;
+  margin: 0 20px;
+  text-align: center;
+  position: relative;
+  padding: 20px 5px 0 5px;
+}
+
+.tree li::before, .tree li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 2px solid #ccc;
+  width: 50%;
+  height: 20px;
+}
+
+.tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 2px solid #ccc;
+}
+
+.tree li:only-child::before,
+.tree li:only-child::after {
+  display: none;
+}
+
+.tree li:only-child {
+  padding-top: 0;
+}
+
+.tree li span {
+  border: 1px solid #0077cc;
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 5px;
+  background: #f9f9f9;
+  color: #000;          /* النص باللون الأسود */
+  font-weight: bold;    /* النص غامق */
+}
+
+.icon-link {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
+/* النافذة المنبثقة */
+.modal {
+  display: none;
+  position: absolute; /* تظهر فوق الزر */
+  top: 60px; /* المسافة من الأعلى (تحت الهيدر) */
+  right: 20px; /* في نفس زاوية زر تسجيل المريض */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  padding: 20px;
+  z-index: 1000;
+  width: 300px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-10px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 18px;
+  text-align: center;
+}
+
+.close {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+  color: #888;
+}
+
+.btn-option {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-login {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-register {
+  background-color: #2196F3;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+form {
+  margin-top: 15px;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}

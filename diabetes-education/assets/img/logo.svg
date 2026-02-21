@@ -1,0 +1,11 @@
+<!-- assets/img/logo.svg -->
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#0ea5e9"/>
+    </linearGradient>
+  </defs>
+  <circle cx="24" cy="24" r="22" fill="url(#g)"/>
+  <path d="M24 12c6 0 10 4 10 10s-4 10-10 10-10-4-10-10 4-10 10-10z" fill="#0b1224" opacity="0.25"/>
+</svg>

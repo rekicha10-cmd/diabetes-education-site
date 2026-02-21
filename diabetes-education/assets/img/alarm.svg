@@ -1,0 +1,4 @@
+<!-- assets/img/alarm.svg -->
+<svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#f59e0b">
+  <path d="M12 8v5l3 3 .7-.7-2.7-2.3V8h-1zM7.88 3.39L2 7.28l1.41 1.41 5.88-3.89L7.88 3.39zM16.12 3.39l-1.41 1.41 5.88 3.89L22 7.28l-5.88-3.89zM12 4a8 8 0 100 16 8 8 0 000-16z"/>
+</svg>
